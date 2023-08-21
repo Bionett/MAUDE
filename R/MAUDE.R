@@ -194,7 +194,8 @@ findGuideHits = function(countTable, curBinBounds, pseudocount=10, meanFunction 
       countTable[b]=countTable[b]+max(1,round(pseudocount*(sum(countTable[b])/1E6)));#add a pseudocount in proportion to depth
     }
     #countTable[sortBins]=countTable[sortBins]+pseudocount;#add a pseudocount
-    countTable[unsortedBin]=countTable[unsortedBin]+pseudocount;
+    #countTable[unsortedBin]=countTable[unsortedBin]+pseudocount;
+    countTable[unsortedBin]=countTable[unsortedBin]+max(1,round(pseudocount*(sum(countTable[unsortedBin])/1E6)))
   }
   curNormNBSummaries = countTable
   countTable$libFraction = countTable[[unsortedBin]]/sum(countTable[[unsortedBin]],na.rm=TRUE)
